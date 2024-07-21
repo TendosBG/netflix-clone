@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "../scripts/axios";
 import "../styles/Row.css";
 import YouTube from "react-youtube";
+// @ts-ignore
 import movieTrailer from "movie-trailer";
 
 interface RowProps {
@@ -38,13 +39,13 @@ const Row: React.FC<RowProps> = ({ title, fetchURL, isLargeRow }) => {
         } else {
 
             movieTrailer(null ,{ tmdbId: movie.id })
-                .then((url)=>{
+                .then((url: string | URL)=>{
                     console.log("url is "+url);
                     const urlParams=new URLSearchParams(new URL(url).search);
                     console.log("urlParamsn"+urlParams);
                     setTrailerUrl(urlParams.get("v"));
                 })
-                .catch((error)=> console.log(error));
+                .catch((error: any)=> console.log(error));
         }
     }
 

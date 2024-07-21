@@ -1,0 +1,1 @@
+export const TMDB_API_KEY = "d6853b6f8f62be76c8ab0883b1b5bc39";
