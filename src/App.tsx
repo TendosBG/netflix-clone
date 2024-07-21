@@ -4,6 +4,7 @@ import requests from './scripts/request'
 
 function App() {
 
+
   return (
     <>
       <h1>My Netflix Clone.</h1>
