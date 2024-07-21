@@ -5,11 +5,10 @@ import Banner from "./components/Banner.tsx";
 import Nav from "./components/Nav.tsx";
 
 function App() {
-
     return (
         <>
-            <Nav />
-            <Banner />
+            <Nav/>
+            <Banner/>
             <Row title={"Seulement sur Netflix"} fetchURL={requests.fetchNetflixOriginals} isLargeRow={true}/>
             <Row title={"Tendance en ce moment"} fetchURL={requests.fetchTrending}/>
             <Row title={"Films salués par la critique"} fetchURL={requests.fetchTopRated}/>
