@@ -2,13 +2,14 @@ import './styles/App.css'
 import Row from './components/Row'
 import requests from './scripts/request'
 import Banner from "./components/Banner.tsx";
+import Nav from "./components/Nav.tsx";
 
 function App() {
 
     return (
         <>
+            <Nav />
             <Banner />
-
             <Row title={"Seulement sur Netflix"} fetchURL={requests.fetchNetflixOriginals} isLargeRow={true}/>
             <Row title={"Tendance en ce moment"} fetchURL={requests.fetchTrending}/>
             <Row title={"Films salués par la critique"} fetchURL={requests.fetchTopRated}/>
