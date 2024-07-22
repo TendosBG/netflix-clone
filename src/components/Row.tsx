@@ -18,7 +18,7 @@ interface Movie {
     name: string;
 }
 
-const base_url = "https://image.tmdb.org/t/p/original/";
+const base_url = "https://image.tmdb.org/t/p/original";
 
 const Row: React.FC<RowProps> = ({ title, fetchURL, isLargeRow }) => {
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -65,13 +65,18 @@ const Row: React.FC<RowProps> = ({ title, fetchURL, isLargeRow }) => {
                     <div className={"left_arrow"}></div>
                 </div>
                 {movies?.map((movie) => (
-                    <img
-                        key={movie.id}
-                        onClick={() => handleClick(movie)}
-                        className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-                        src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
-                        alt={movie.name}
-                    />
+                    ((isLargeRow && movie.poster_path) || (!isLargeRow && movie.backdrop_path))?
+                        <img
+                            key={movie.id}
+                            onClick={() => handleClick(movie)}
+                            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                            src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+                            alt={movie.name}
+                        />
+                        : null
+
+
+
                 ))}
                 <div className={"right_arrow"}></div>
             </div>
