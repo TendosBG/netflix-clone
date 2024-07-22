@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "../scripts/axios";
 import "../styles/Row.css";
 import YouTube from "react-youtube";
-// @ts-ignore
+// @ts-expect-error Cannot find module 'movie-trailer'.
 import movieTrailer from "movie-trailer";
 
 interface RowProps {
@@ -45,7 +45,7 @@ const Row: React.FC<RowProps> = ({ title, fetchURL, isLargeRow }) => {
                     console.log("urlParamsn"+urlParams);
                     setTrailerUrl(urlParams.get("v"));
                 })
-                .catch((error: any)=> console.log(error));
+                .catch((error: never)=> console.log(error));
         }
     }
 
@@ -61,6 +61,9 @@ const Row: React.FC<RowProps> = ({ title, fetchURL, isLargeRow }) => {
         <div className={"row"}>
             <h2>{title}</h2>
             <div className={"row__posters"}>
+                <div className={"left_side"}>
+                    <div className={"left_arrow"}></div>
+                </div>
                 {movies?.map((movie) => (
                     <img
                         key={movie.id}
@@ -70,8 +73,9 @@ const Row: React.FC<RowProps> = ({ title, fetchURL, isLargeRow }) => {
                         alt={movie.name}
                     />
                 ))}
+                <div className={"right_arrow"}></div>
             </div>
-            {trailerUrl ? <YouTube videoId={trailerUrl} opts={opts} /> : null}
+            {trailerUrl ? <YouTube videoId={trailerUrl} opts={opts}/> : null}
         </div>
     );
 }

@@ -34,3 +34,22 @@
 .row__posterLarge:hover {
   transform: scale(1.09);
 }
+
+.left_side{
+    display: flex;
+    background-image: linear-gradient(90deg, transparent, rgba(37, 37, 37, 0.61), #111);
+    width: 100px;
+}
+
+.left_arrow{
+    background-image: url("../assets/left-arrow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    align-self: center;
+    z-index: 1;
+    left: 20px;
+}
